@@ -1,2 +1,476 @@
 # Bhumika24-web.github.io
 my portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhumika Srivastava | Data Analytics Portfolio</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Colors */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-hover: #0ea5e9;
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(15, 23, 42, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #334155;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        header h1 span {
+            color: var(--accent-color);
+        }
+
+        header h2 {
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: #0f172a;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 10px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            color: #0f172a;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: #0f172a;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--text-main);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Me */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Experience & Education */
+        .timeline {
+            border-left: 2px solid var(--accent-color);
+            padding-left: 30px;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .timeline-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Contact */
+        #contact {
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .social-links a {
+            font-size: 2rem;
+            color: var(--text-main);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--card-bg);
+            color: var(--text-muted);
+            border-top: 1px solid #334155;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 15px; }
+            .nav-links { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            header h1 { font-size: 2.5rem; }
+            header h2 { font-size: 1.2rem; }
+            section { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Bhumika S.</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <h1>Hi, I'm <span>Bhumika Srivastava</span></h1>
+        <h2>Data Analytics Enthusiast & BCA Graduate</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin-bottom: 30px;">
+            Proficient in Advanced Excel, SQL, Power BI, and Tableau. I turn raw data into actionable business insights.
+        </p>
+        <div>
+            <a href="#projects" class="btn">View My Work</a>
+            <a href="https://github.com/Bhumika24-web" target="_blank" class="btn btn-outline">GitHub Profile</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>
+                I am a detail-oriented BCA graduate with specialized training in Data Analytics. I focus on data cleaning, interactive dashboard creation, reporting, and delivering actionable business insights. I am a quick learner, adaptable, and thrive in collaborative environments. Outside of data, I enjoy <b>sketching</b> and <b>travelling</b>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-file-excel"></i>
+                <h3>Advanced Excel</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-chart-bar"></i>
+                <h3>Power BI</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-chart-pie"></i>
+                <h3>Tableau</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database"></i>
+                <h3>SQL & DBMS</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-python"></i>
+                <h3>Python (Basics)</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-broom"></i>
+                <h3>Data Cleaning</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Key Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <h3>Automated Invoice Generator</h3>
+                <p>Designed a structured, reusable Excel invoice template automating billing calculations. Streamlined data organization for customer records, itemized inventories, pricing, and tax totals.</p>
+                <div class="tags">
+                    <span class="tag">Advanced Excel</span>
+                    <span class="tag">Automation</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Intranet Portal & Local Notes</h3>
+                <p>Built an internal communication platform to improve team coordination and info-sharing. Integrated a local notes utility allowing users to organize personal tasks and records securely.</p>
+                <div class="tags">
+                    <span class="tag">Web Development</span>
+                    <span class="tag">Data Management</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Dynamic Weather Application</h3>
+                <p>Developed a web application fetching real-time global weather metrics via REST API. Structured dynamic UI elements to present key meteorological indicators cleanly to end users.</p>
+                <div class="tags">
+                    <span class="tag">REST API</span>
+                    <span class="tag">UI/UX</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience & Education</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <h3>Intern - Finance & IT Department</h3>
+                <h4>HURL, New Delhi</h4>
+                <p>Gained hands-on exposure to IT workflows, information handling, and internal business applications. Analyzed cross-departmental business processes and presented a comprehensive cybersecurity presentation.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Bachelor of Computer Applications (BCA)</h3>
+                <h4>IIMT College of Management, Greater Noida</h4>
+                <p>Specialized training in Data Analytics, database management, and software development.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Certifications & Job Simulations</h3>
+                <h4>Deloitte, Tata, Great Learning</h4>
+                <p>Data Analytics Certificate (Comprehensive), Deloitte Job Simulation, Tata ESG Job Simulation, Machine Learning & GenAI.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <p>I am currently open to full-time opportunities in Data Analytics. Feel free to reach out!</p>
+        
+        <div class="social-links">
+            <a href="mailto:bhumika.srivastava2005@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/bhumika-srivastava-b405ba29a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Bhumika24-web" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        
+        <a href="mailto:bhumika.srivastava2005@gmail.com" class="btn">Send an Email</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Bhumika Srivastava. Built with ❤️ for Data Analytics.</p>
+    </footer>
+
+</body>
+</html>
